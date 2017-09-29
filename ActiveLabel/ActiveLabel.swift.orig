@@ -327,18 +327,25 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         for (type, elements) in activeElements {
 
             switch type {
+<<<<<<< HEAD
             case .mention:
-                attributes[NSAttributedStringKey.foregroundColor] = mentionColor
-                attributes[NSAttributedStringKey.underlineStyle] = mentionUnderLineStyle.rawValue
+                attributes[NSForegroundColorAttributeName] = mentionColor
+                attributes[NSUnderlineStyleAttributeName] = mentionUnderLineStyle.rawValue
             case .hashtag:
-                attributes[NSAttributedStringKey.foregroundColor] = hashtagColor
-                attributes[NSAttributedStringKey.underlineStyle] = hashtagUnderLineStyle.rawValue
+                attributes[NSForegroundColorAttributeName] = hashtagColor
+                attributes[NSUnderlineStyleAttributeName] = hashtagUnderLineStyle.rawValue
             case .url:
-                attributes[NSAttributedStringKey.foregroundColor] = URLColor
-                attributes[NSAttributedStringKey.underlineStyle] = URLUnderLineStyle.rawValue
+                attributes[NSForegroundColorAttributeName] = URLColor
+                attributes[NSUnderlineStyleAttributeName] = URLUnderLineStyle.rawValue
             case .custom:
-                attributes[NSAttributedStringKey.foregroundColor] = customColor[type] ?? defaultCustomColor
-                attributes[NSAttributedStringKey.underlineStyle] = customUnderLineStyle[type]?.rawValue ?? NSUnderlineStyle.styleNone.rawValue
+                attributes[NSForegroundColorAttributeName] = customColor[type] ?? defaultCustomColor
+                attributes[NSUnderlineStyleAttributeName] = customUnderLineStyle[type]?.rawValue ?? NSUnderlineStyle.styleNone.rawValue
+=======
+            case .mention: attributes[NSAttributedStringKey.foregroundColor] = mentionColor
+            case .hashtag: attributes[NSAttributedStringKey.foregroundColor] = hashtagColor
+            case .url: attributes[NSAttributedStringKey.foregroundColor] = URLColor
+            case .custom: attributes[NSAttributedStringKey.foregroundColor] = customColor[type] ?? defaultCustomColor
+>>>>>>> 3f869d1245e3663379d92a2b918f0af7aec9cf89
             }
             
             if let highlightFont = hightlightFont {
