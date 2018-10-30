@@ -33,10 +33,16 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
     @IBInspectable open var mentionSelectedColor: UIColor? {
         didSet { updateTextStorage(parseText: false) }
     }
+    open var mentionUnderLineStyle: NSUnderlineStyle = [] {
+        didSet { updateTextStorage(parseText: false) }
+    }
     @IBInspectable open var hashtagColor: UIColor = .blue {
         didSet { updateTextStorage(parseText: false) }
     }
     @IBInspectable open var hashtagSelectedColor: UIColor? {
+        didSet { updateTextStorage(parseText: false) }
+    }
+    open var hashtagUnderLineStyle: NSUnderlineStyle = [] {
         didSet { updateTextStorage(parseText: false) }
     }
     @IBInspectable open var URLColor: UIColor = .blue {
@@ -45,10 +51,16 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
     @IBInspectable open var URLSelectedColor: UIColor? {
         didSet { updateTextStorage(parseText: false) }
     }
+    open var URLUnderLineStyle: NSUnderlineStyle = [] {
+        didSet { updateTextStorage(parseText: false) }
+    }
     open var customColor: [ActiveType : UIColor] = [:] {
         didSet { updateTextStorage(parseText: false) }
     }
     open var customSelectedColor: [ActiveType : UIColor] = [:] {
+        didSet { updateTextStorage(parseText: false) }
+    }
+    open var customUnderLineStyle: [ActiveType : NSUnderlineStyle] = [:] {
         didSet { updateTextStorage(parseText: false) }
     }
     @IBInspectable public var lineSpacing: CGFloat = 0 {
@@ -315,10 +327,18 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         for (type, elements) in activeElements {
 
             switch type {
-            case .mention: attributes[NSAttributedString.Key.foregroundColor] = mentionColor
-            case .hashtag: attributes[NSAttributedString.Key.foregroundColor] = hashtagColor
-            case .url: attributes[NSAttributedString.Key.foregroundColor] = URLColor
-            case .custom: attributes[NSAttributedString.Key.foregroundColor] = customColor[type] ?? defaultCustomColor
+            case .mention:
+                attributes[NSAttributedString.Key.foregroundColor] = mentionColor
+                attributes[NSAttributedString.Key.underlineStyle] = mentionUnderLineStyle.rawValue
+            case .hashtag:
+                attributes[NSAttributedString.Key.foregroundColor] = hashtagColor
+                attributes[NSAttributedString.Key.underlineStyle] = hashtagUnderLineStyle.rawValue
+            case .url:
+                attributes[NSAttributedString.Key.foregroundColor] = URLColor
+                attributes[NSAttributedString.Key.underlineStyle] = URLUnderLineStyle.rawValue
+            case .custom:
+                attributes[NSAttributedString.Key.foregroundColor] = customColor[type] ?? defaultCustomColor
+                attributes[NSAttributedString.Key.underlineStyle] = customUnderLineStyle[type]?.rawValue ?? 0
             }
             
             if let highlightFont = hightlightFont {

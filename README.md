@@ -70,6 +70,7 @@ label.customize { label in
     label.hashtagColor = UIColor(red: 85.0/255, green: 172.0/255, blue: 238.0/255, alpha: 1)
     label.mentionColor = UIColor(red: 238.0/255, green: 85.0/255, blue: 96.0/255, alpha: 1)
     label.URLColor = UIColor(red: 85.0/255, green: 238.0/255, blue: 151.0/255, alpha: 1)
+    label.URLUnderLineStyle = .styleSingle
     label.handleMentionTap { self.alert("Mention", message: $0) }
     label.handleHashtagTap { self.alert("Hashtag", message: $0) }
     label.handleURLTap { self.alert("URL", message: $0.absoluteString) }
@@ -92,12 +93,16 @@ From now on, a url that's bigger than that, will be trimmed.
 
 ##### `mentionColor: UIColor = .blueColor()`
 ##### `mentionSelectedColor: UIColor?`
+##### `mentionUnderLineStyle: NSUnderlineStyle = []`
 ##### `hashtagColor: UIColor = .blueColor()`
 ##### `hashtagSelectedColor: UIColor?`
+##### `hashtagUnderLineStyle: NSUnderlineStyle = []`
 ##### `URLColor: UIColor = .blueColor()`
 ##### `URLSelectedColor: UIColor?`
+##### `URLUnderLineStyle: NSUnderlineStyle = []`
 ##### `customColor: [ActiveType : UIColor]`
 ##### `customSelectedColor: [ActiveType : UIColor]`
+##### `customUnderLineStyle: [ActiveType : NSUnderlineStyle]`
 ##### `lineSpacing: Float?`
 
 ##### `handleMentionTap: (String) -> ()`
