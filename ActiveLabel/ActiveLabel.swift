@@ -236,7 +236,7 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         case .cancelled:
             updateAttributesWhenSelected(false)
             selectedElement = nil
-        case .stationary:
+        default:
             break
         }
 
